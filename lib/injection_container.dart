@@ -17,20 +17,21 @@ Future<int> init() async {
 
   //Core
   sl.registerSingleton<ANetworkInfo>(NetworkInfo(connecitonChecker: sl()));
-  
+
   // //Datasource
   sl.registerSingleton<AMeteoRemoteDataSource>(
       MeteoRemoteDataSource(client: sl()));
   sl.registerSingleton<AMeteoRepository>(
       MeteoRepository(remoteDataSource: sl(), networkInfo: sl()));
-
-  // //Bloc
-  sl.registerFactory<MeteodetailCubit>(
-      () => MeteodetailCubit(meteoRepository: sl()));
-
+      
   // //Usecase
   sl.registerSingleton<GetTownMeteoUsecase>(
       GetTownMeteoUsecase(meteoRepository: sl(), remoteDataSource: sl()));
+
+  // //Bloc
+  sl.registerFactory<MeteodetailCubit>(
+      () => MeteodetailCubit(meteoRepository: sl(), getTownMeteoUsecase: sl()));
+
 
   return Future.value(0);
 }
