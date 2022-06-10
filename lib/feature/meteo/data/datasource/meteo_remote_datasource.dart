@@ -1,5 +1,4 @@
 import 'dart:convert';
-import 'dart:io';
 
 import 'package:app_meteo/core/error/a_failure.dart';
 import 'package:app_meteo/feature/meteo/data/model/meteo_info_model.dart';
@@ -7,7 +6,7 @@ import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
 import 'package:http/http.dart' as http;
 
 abstract class AMeteoRemoteDataSource {
-  Future<MeteoInfo> getRemoteTownMeteo(town);
+  Future<MeteoInfoModel> getRemoteTownMeteo(town);
 }
 
 class MeteoRemoteDataSource implements AMeteoRemoteDataSource {
@@ -20,7 +19,8 @@ class MeteoRemoteDataSource implements AMeteoRemoteDataSource {
 
   MeteoRemoteDataSource({required this.client});
 
-  Future<MeteoInfo> getRemoteTownMeteo(town) async {
+  @override
+  Future<MeteoInfoModel> getRemoteTownMeteo(town) async {
     try {
       final String url =
           "$baseUrl/$town?unitGroup=metric&key=$apiKey&contentType=json";

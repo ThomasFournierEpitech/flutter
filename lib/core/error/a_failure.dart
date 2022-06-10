@@ -15,6 +15,8 @@ class ServerFailure extends Equatable implements AFailure {
 }
 
 class CacheFailure extends Equatable implements AFailure {
+  const CacheFailure([List properties = const <dynamic>[]]);
+
   @override
   List<Object> get props => [];
 }

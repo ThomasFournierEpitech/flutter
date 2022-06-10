@@ -1,3 +1,4 @@
+
 import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
 
 class MeteoInfoModel extends MeteoInfo {
@@ -11,5 +12,14 @@ class MeteoInfoModel extends MeteoInfo {
       resolvedAddress: json['resolvedAddress'],
       feelsLike: (json['currentConditions']['feelslike'] as num).toDouble(),
     );
+  }
+
+  Map<String, dynamic> toJson() {
+    return {
+      "resolvedAddress": resolvedAddress,
+      "currentConditions": {
+        "feelslike": feelsLike,
+      },
+    };
   }
 }

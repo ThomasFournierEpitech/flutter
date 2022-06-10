@@ -1,6 +1,5 @@
 import 'package:app_meteo/feature/meteo/presentation/input/town_input.dart';
 import 'package:bloc/bloc.dart';
-import 'package:equatable/equatable.dart';
 import 'package:formz/formz.dart';
 
 part 'meteo_town_form_state.dart';
