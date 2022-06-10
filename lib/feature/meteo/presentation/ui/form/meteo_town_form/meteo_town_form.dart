@@ -1,6 +1,8 @@
 import 'package:app_meteo/feature/meteo/presentation/ui/page/meteo_detail_page.dart';
 import 'package:app_meteo/feature/meteo/presentation/bloc/widget/meteo_detail_bloc/meteo_detail_cubit.dart';
 import 'package:app_meteo/feature/meteo/presentation/bloc/form/meteo_town_form/meteo_town_form_cubit.dart';
+import 'package:app_meteo/injection_container.dart';
+import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:formz/formz.dart';

@@ -1,7 +1,6 @@
 import 'package:app_meteo/feature/meteo/presentation/ui/widget/meteo_detail_widget/meteo_detail_widget.dart';
 import 'package:app_meteo/feature/meteo/presentation/bloc/widget/meteo_detail_bloc/meteo_detail_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 class MeteoDetailPage extends StatelessWidget {
   final String town;
@@ -17,16 +16,9 @@ class MeteoDetailPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('MeteoDetail'),
       ),
-      body: MultiBlocProvider(
-        providers: [
-          BlocProvider(
-            create: (context) => MeteodetailCubit(),
-          ),
-        ],
-        child: MeteoDetailWidget(
+      body: MeteoDetailWidget(
           town: town,
-          meteoDetailBloc: meteoDetailBloc,
-        ),
+        meteoDetailBloc: meteoDetailBloc,
       ),
     );
   }

@@ -1,34 +1,27 @@
+import 'package:app_meteo/feature/meteo/data/datasource/meteo_remote_datasource.dart';
 import 'package:app_meteo/feature/meteo/domain/a_repository/a_meteo_repository.dart';
 import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
 import 'package:app_meteo/feature/meteo/domain/usecase/get_town_meteo_usecase.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:mocktail/mocktail.dart';
+import 'package:http/http.dart' as http;
 
 class MockMeteoRepository extends Mock implements AMeteoRepository {
   MockMeteoRepository();
 }
 
-class Cat {
-  String sound() => "Meow";
-  bool eatFood(String food, {required bool hungry}) => true;
-  Future<void> chew() async => print("Chewing...");
-  int walk(List<String> places) => 7;
-  void sleep() {}
-  void hunt(String place, String prey) {}
-  int lives = 9;
-}
-
-// Mock class
-class MockCat extends Mock implements Cat {}
-
 void main() async {
   late GetTownMeteoUsecase usecase;
   late MockMeteoRepository mockMeteoRepository;
+  final AMeteoRemoteDataSource remoteDataSource =
+      MeteoRemoteDataSource(client: http.Client());
 
   setUp(() {
     mockMeteoRepository = MockMeteoRepository();
-    usecase = GetTownMeteoUsecase(mockMeteoRepository);
+    usecase = GetTownMeteoUsecase(
+        remoteDataSource: remoteDataSource,
+        meteoRepository: mockMeteoRepository);
   });
 
   const String town = "Paris";

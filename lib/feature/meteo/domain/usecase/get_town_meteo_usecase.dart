@@ -1,18 +1,23 @@
 import 'package:app_meteo/core/error/a_failure.dart';
 import 'package:app_meteo/core/usecase/usecase.dart';
+import 'package:app_meteo/feature/meteo/data/datasource/meteo_remote_datasource.dart';
 import 'package:app_meteo/feature/meteo/domain/a_repository/a_meteo_repository.dart';
 import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
 import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 
 class GetTownMeteoUsecase implements UserCase<MeteoInfo, Params> {
-  final AMeteoRepository repository;
+  final AMeteoRepository meteoRepository;
 
-  GetTownMeteoUsecase(this.repository);
+  final AMeteoRemoteDataSource remoteDataSource;
+
+
+  GetTownMeteoUsecase(
+      {required this.meteoRepository, required this.remoteDataSource});
 
   @override
   Future<Either<AFailure, MeteoInfo>> call(Params params) async {
-    return await repository.getTownMeteo(params.town);
+    return await meteoRepository.getTownMeteo(params.town);
   }
 }
 

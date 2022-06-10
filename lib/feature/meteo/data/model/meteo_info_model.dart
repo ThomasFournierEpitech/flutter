@@ -1,5 +1,4 @@
 import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
-import 'package:equatable/equatable.dart';
 
 class MeteoInfoModel extends MeteoInfo {
   const MeteoInfoModel({

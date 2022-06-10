@@ -3,6 +3,7 @@ import 'package:app_meteo/feature/meteo/presentation/bloc/widget/meteo_detail_bl
 import 'package:app_meteo/feature/meteo/presentation/bloc/form/meteo_town_form/meteo_town_form_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:get_it/get_it.dart';
 
 class MeteoHomePage extends StatelessWidget {
   const MeteoHomePage({Key? key}) : super(key: key);
@@ -12,7 +13,7 @@ class MeteoHomePage extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => MeteodetailCubit(),
+          create: (context) => GetIt.I<MeteodetailCubit>(),
         ),
         BlocProvider(
           create: (context) => TownFormCubit(),

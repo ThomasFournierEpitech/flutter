@@ -3,5 +3,7 @@ import 'package:app_meteo/feature/meteo/domain/entity/meteo_info.dart';
 import 'package:dartz/dartz.dart';
 
 abstract class AMeteoRepository {
+
+  
   Future<Either<AFailure, MeteoInfo>> getTownMeteo(String town);
 }

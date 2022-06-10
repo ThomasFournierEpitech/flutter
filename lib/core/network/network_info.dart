@@ -7,7 +7,7 @@ abstract class ANetworkInfo {
 class NetworkInfo implements ANetworkInfo {
   final Connectivity connecitonChecker;
 
-  NetworkInfo(this.connecitonChecker);
+  NetworkInfo({required this.connecitonChecker});
 
   @override
   Future<bool> get isConnected async =>
